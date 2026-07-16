@@ -1,0 +1,887 @@
+/* CSS for Premium Prussian Blue Login Page */
+
+:root {
+  --prussian-blue: #0B3C5D;
+  --light-primary: #EAF4FA;
+  --very-light-blue: #F5FAFD;
+  --slate-dark: #0F172A;
+  --slate-muted: #64748B;
+  --border-color: #E5E7EB;
+  --hover-blue: #174A72;
+  --success-green: #10B981;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 2px 8px rgba(11, 60, 93, 0.04);
+  --shadow-md: 0 10px 30px rgba(11, 60, 93, 0.08);
+  --shadow-lg: 0 20px 40px rgba(11, 60, 93, 0.12);
+  --font-premium: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.premium-login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #FFFFFF;
+  font-family: var(--font-premium);
+  color: var(--slate-dark);
+  overflow-x: hidden;
+}
+
+/* 45% Left / 55% Right split on large screens */
+.left-auth-panel {
+  width: 45%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 80px;
+  z-index: 10;
+  background-color: #FFFFFF;
+}
+
+.right-visual-panel {
+  width: 55%;
+  height: 100vh;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Grid adjustments */
+@media (max-width: 1200px) {
+  .left-auth-panel {
+    padding: 50px 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  .premium-login-container {
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto;
+  }
+  .left-auth-panel {
+    width: 100%;
+    min-height: auto;
+    padding: 60px 40px;
+  }
+  .right-visual-panel {
+    width: 100%;
+    height: 600px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .left-auth-panel {
+    padding: 40px 24px;
+  }
+  .right-visual-panel {
+    height: 520px;
+    padding: 10px;
+  }
+}
+
+/* Left panel content styling */
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.brand-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--prussian-blue) 0%, var(--hover-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 8px 16px rgba(11, 60, 93, 0.2);
+}
+
+.brand-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.brand-title span {
+  color: var(--prussian-blue);
+}
+
+.brand-motto {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--slate-muted);
+  text-transform: uppercase;
+}
+
+/* Form structure */
+.login-form-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.login-heading {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--slate-dark);
+  margin: 0 0 10px 0;
+}
+
+.login-subheading {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate-muted);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+}
+
+.form-inputs-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Premium pill shaped inputs */
+.pill-input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.pill-input {
+  width: 100%;
+  height: 54px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  padding: 0 54px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate-dark);
+  background-color: #FFFFFF;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.pill-input::placeholder {
+  color: transparent; /* Used for floating label pattern */
+}
+
+/* Floating Label Animation */
+.pill-label {
+  position: absolute;
+  left: 54px;
+  pointer-events: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--slate-muted);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+
+.pill-input:focus ~ .pill-label,
+.pill-input:not(:placeholder-shown) ~ .pill-label {
+  font-size: 11px;
+  transform: translateY(-26px);
+  left: 24px;
+  color: var(--prussian-blue);
+  font-weight: 700;
+  background-color: #FFFFFF;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.pill-input:focus {
+  border-color: var(--prussian-blue);
+  box-shadow: 0 0 0 4px var(--light-primary);
+}
+
+.input-icon-left {
+  position: absolute;
+  left: 20px;
+  color: var(--slate-muted);
+  pointer-events: none;
+  transition: color 0.3s;
+}
+
+.pill-input:focus ~ .input-icon-left {
+  color: var(--prussian-blue);
+}
+
+.input-toggle-right {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--slate-muted);
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.input-toggle-right:hover {
+  color: var(--prussian-blue);
+  background-color: var(--light-primary);
+}
+
+.forgot-password-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--prussian-blue);
+  text-decoration: none;
+  transition: color 0.2s;
+  align-self: flex-end;
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+
+.forgot-password-link:hover {
+  color: var(--hover-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Submit and third party buttons */
+.btn-submit-pill {
+  width: 100%;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background-color: var(--prussian-blue);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 8px 20px rgba(11, 60, 93, 0.15);
+}
+
+.btn-submit-pill:hover {
+  background-color: var(--hover-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(11, 60, 93, 0.25);
+}
+
+.btn-submit-pill:active {
+  transform: translateY(0);
+}
+
+.btn-submit-pill:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-submit-pill .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.btn-submit-pill:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.btn-google-pill {
+  width: 100%;
+  height: 54px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  color: var(--slate-dark);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-google-pill:hover {
+  background-color: var(--very-light-blue);
+  border-color: #D1D5DB;
+  transform: translateY(-1px);
+}
+
+.btn-google-pill:active {
+  transform: translateY(0);
+}
+
+.auth-bottom-nav {
+  text-align: center;
+  font-size: 14px;
+  color: var(--slate-muted);
+  font-weight: 500;
+  margin-top: 24px;
+}
+
+.auth-bottom-nav button, .auth-bottom-nav a {
+  background: none;
+  border: none;
+  font-weight: 700;
+  color: var(--prussian-blue);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.auth-bottom-nav button:hover, .auth-bottom-nav a:hover {
+  color: var(--hover-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.copyright-text {
+  font-size: 12px;
+  color: var(--slate-muted);
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+/* Banners */
+.premium-alert-banner {
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.premium-alert-banner.error {
+  background-color: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  color: #B91C1C;
+}
+
+.premium-alert-banner.success {
+  background-color: #ECFDF5;
+  border: 1px solid #D1FAE5;
+  color: #065F46;
+}
+
+/* Right Visual Panel layout & design */
+.visual-panel-inner {
+  width: 100%;
+  height: 100%;
+  background-color: var(--very-light-blue);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(11, 60, 93, 0.05);
+  box-shadow: inset 0 0 40px rgba(11, 60, 93, 0.02);
+}
+
+/* Orbit background lines */
+.orbits-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orbit-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1.5px dashed rgba(11, 60, 93, 0.05);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-circle-1 { width: 280px; height: 280px; }
+.orbit-circle-2 { width: 440px; height: 440px; }
+.orbit-circle-3 { width: 620px; height: 620px; }
+
+/* Interactive glowing particles */
+.orbit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--prussian-blue);
+  opacity: 0.15;
+}
+
+/* Floating mascot center wrapper */
+.mascot-center-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+}
+
+/* Mascot SVG detailed design */
+.mascot-robot-svg {
+  width: 220px;
+  height: 220px;
+  filter: drop-shadow(0 15px 30px rgba(11, 60, 93, 0.12));
+}
+
+.mascot-eye-glow {
+  animation: eyePulse 4s infinite alternate;
+}
+
+@keyframes eyePulse {
+  0% { filter: drop-shadow(0 0 2px #38BDF8); opacity: 0.85; }
+  100% { filter: drop-shadow(0 0 8px #0284C7); opacity: 1; }
+}
+
+/* Glassmorphism Floating Cards */
+.floating-glass-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 22px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(11, 60, 93, 0.06);
+  z-index: 5;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: auto;
+}
+
+.floating-glass-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 16px 40px rgba(11, 60, 93, 0.12);
+  border-color: rgba(11, 60, 93, 0.15);
+}
+
+.floating-glass-card .card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.floating-glass-card .card-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--slate-dark);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.floating-glass-card .card-desc {
+  font-size: 11.5px;
+  color: var(--slate-muted);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Positions of glass cards around robot */
+.glass-card-energy {
+  top: 15%;
+  left: 5%;
+  width: 220px;
+}
+
+.glass-card-trending {
+  top: 20%;
+  right: 5%;
+  width: 170px;
+}
+
+.glass-card-headlines {
+  bottom: 25%;
+  left: 6%;
+  width: 210px;
+}
+
+.glass-card-world {
+  bottom: 20%;
+  right: 6%;
+  width: 190px;
+}
+
+/* Right Visual Bottom Content */
+.visual-bottom-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  width: 100%;
+}
+
+.right-panel-heading {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--slate-dark);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.right-panel-subheading {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate-muted);
+  text-align: center;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.right-panel-subheading span.bullet {
+  color: var(--prussian-blue);
+  font-size: 10px;
+}
+
+.right-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+  border-top: 1px solid rgba(11, 60, 93, 0.08);
+  padding-top: 20px;
+}
+
+/* Feature pills */
+.feature-pill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+}
+
+.feature-pill-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(11, 60, 93, 0.15);
+}
+
+.feature-pill-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--light-primary);
+  color: var(--prussian-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-pill-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate-dark);
+}
+
+/* Ripple effect styles */
+.btn-submit-pill .ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: rippleAnimation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnimation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Three.js WebGL Globe CSS classes */
+.three-globe-container {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  pointer-events: none; /* Decorative only */
+}
+
+.globe-loading-placeholder {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate-muted);
+  letter-spacing: 0.5px;
+}
+
+/* SVG Orbits Overlay */
+.orbital-lines-svg {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.globe-stage-wrapper {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Glassmorphism News Cards */
+.floating-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 22px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.12);
+  width: 190px;
+  max-width: 210px;
+  z-index: 20;
+  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease;
+  pointer-events: auto;
+}
+
+.floating-card:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.22);
+}
+
+.card-header-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.card-icon {
+  font-size: 13px;
+}
+
+.card-badge-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--slate-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-status-pill {
+  margin-left: auto;
+  font-size: 8.5px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background-color: var(--light-primary);
+  color: var(--prussian-blue);
+  text-transform: uppercase;
+}
+
+.floating-card-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--slate-dark);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.floating-card-desc {
+  font-size: 10.5px;
+  color: var(--slate-muted);
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.card-footer-row {
+  border-top: 1px solid rgba(11, 60, 93, 0.06);
+  padding-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-footer-text {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--slate-muted);
+}
+
+/* Card Positioning & float animations */
+.pos-top-left {
+  top: 10%;
+  left: 6%;
+  animation: float-1 11s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.pos-top-center {
+  top: 4%;
+  left: 38%;
+  animation: float-2 13s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.pos-top-right {
+  top: 12%;
+  right: 6%;
+  animation: float-3 12s ease-in-out infinite;
+  animation-delay: 3.2s;
+}
+
+.pos-middle-left {
+  top: 42%;
+  left: 3%;
+  animation: float-4 14s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.pos-middle-right {
+  top: 45%;
+  right: 3%;
+  animation: float-5 15s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+.pos-bottom-left {
+  bottom: 12%;
+  left: 5%;
+  animation: float-6 10s ease-in-out infinite;
+  animation-delay: 4.5s;
+}
+
+.pos-bottom-right {
+  bottom: 10%;
+  right: 6%;
+  animation: float-7 12s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+/* Keyframe animations for gentle floating with GPU acceleration */
+@keyframes float-1 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-3px, 6px, 0) rotate(0.8deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-2 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(5px, -5px, 0) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-3 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-6px, -4px, 0) rotate(0.6deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-4 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(4px, 6px, 0) rotate(-0.8deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-5 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-5px, -5px, 0) rotate(1deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-6 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(6px, 4px, 0) rotate(-0.6deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+@keyframes float-7 {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(3px, -6px, 0) rotate(0.8deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+}
+
+/* Responsiveness media queries */
+@media (max-width: 1250px) {
+  /* Hide a few cards on tablet sizes to prevent overlap */
+  .pos-top-center, .pos-bottom-left {
+    display: none !important;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Hide all orbits and cards on mobile, keeping just the central globe */
+  .floating-card {
+    display: none !important;
+  }
+  .orbital-lines-svg {
+    display: none !important;
+  }
+}
+
+
+
