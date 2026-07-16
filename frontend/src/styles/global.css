@@ -2619,6 +2619,10 @@ body.dark-mode .right-sidebar::-webkit-scrollbar-thumb:hover {
   gap: 12px;
   cursor: pointer;
   align-items: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.trending-widget-item:hover {
+  transform: translateX(4px);
 }
 .trending-rank {
   font-size: 20px;
