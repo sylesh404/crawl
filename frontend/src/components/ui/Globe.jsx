@@ -113,7 +113,7 @@ export default function Globe() {
     };
 
     const render = () => {
-      time += 0.0006; // Slow rotation speed (approx 15-20s per revolution)
+      time += 0.001; // Slightly faster rotation speed
 
       const width = canvas.width / (window.devicePixelRatio || 1);
       const height = canvas.height / (window.devicePixelRatio || 1);
